@@ -1,0 +1,38 @@
+{% extends 'mainapp/tamplate.html' %}
+
+{% block title %}
+    Профиль
+{% endblock %}
+{%block Content_title%}
+{% if messages%}
+    {% for mes in messages %}
+        <div class="alert alert-success">{{ mes }}</div>
+    {%endfor%}
+{%endif%}
+{% endblock %}
+{% block Content %}
+  <div class="row justify-content-start">
+    <div class="col-md-10 col-12 profile d-flex justify-content-around">
+      <div>
+        <h3 class="text-dark ">Ваш Профиль</h3>
+        <img class="bd-placeholder-img rounded" width="64" height="64" src = "{{user.profile.user_img.url}}">
+      </div>
+      <div>
+        <br>
+        <h4 class="text-dark">Имя: @{{user.username}}</h4>
+        <h4 class="text-dark">E-mail: {{user.email}}</h4>
+      </div>
+  </div>
+  </div>
+  <div class="row justify-content-start">
+    <div class="updateform col-md-10 col-12">
+      <form method="POST" enctype="multipart/form-data" class="form-register mt-3">
+        {%csrf_token%}
+        {{updetaUserform.as_p}}
+        {{updateIcon.as_p}}
+        {{updateGender.as_p}}
+        <button class="d-block btn btn-dark" type="submit">Обновить</button>
+    </form>
+    </div>
+  </div>
+{% endblock%}

@@ -1,0 +1,24 @@
+{% extends 'mainapp/tamplate.html' %}
+
+{% block title %}
+    Главная
+{% endblock %}
+
+{%block Content_title%}
+    {% if messages%}
+        {% for mes in messages %}
+            <div class="alert alert-success">{{ mes }}</div>
+        {%endfor%}
+    {%endif%}
+    <div class="row d-md-flex justify-content-center">      
+        <div class="col-md-10">
+            <h1 class="display-2 text-center text-dark">Простой и удобный сервис</h1>
+            <p class="h2 text-center text-dark">
+                Делаем роботу быстрой и качественной
+            </p>
+        </div>
+        <div class="col-md-4 mt-md-3 mt-5">
+            <a href="{% url 'all_cource'%}"><button id ="btn_uslugi" class="btn btn-warning ml-md-5" >Просмотреть курсы</button></a>
+        </div>
+    </div>
+{% endblock %}

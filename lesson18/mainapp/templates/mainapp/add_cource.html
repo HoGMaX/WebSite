@@ -1,0 +1,27 @@
+{% extends 'mainapp/tamplate.html' %}
+
+{% block title %}
+    Добавить курс
+{% endblock %}
+
+{%block Content_title%}
+    {% if messages%}
+        {% for mes in messages %}
+            <div class="alert alert-success">{{ mes }}</div>
+        {%endfor%}
+    {%endif%}
+{% endblock %}
+{% block Content %}
+    <div class="row d-md-flex flex-wrap justify-content-center">
+  <div class="contacts row d-md-flex d-flex justify-content-center">
+      <div class="col-md-11 col-12">
+          {%csrf_token%}
+          <form enctype="multipart/form-data" class = "form-register auth" method="POST">
+              {%csrf_token%}
+              {{form.as_p}}
+              <button class="d-block btn btn-dark" type="submit">Добавить курс</button>
+          </form>
+      </div>
+  </div>
+</div>
+{% endblock%}

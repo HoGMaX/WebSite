@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'mainapp/main.css' %}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="{% url 'mainpage' %}">Simpy</a>
+            <div class="collapse navbar-collapse ">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'add_cource' %}" >Добавить курс<span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'all_cource' %}">Все курсы</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">О нас</a>
+                  </li>
+                </ul>
+            </div>
+            {%if not user.is_authenticated%}
+            <a href="{% url 'regform' %}"><button class="btn btn-outline-warning">Регистрация</button></a>
+            <a href="{% url 'user'%}"><button class="btn btn-outline-light ml-md-3">Войти</button></a>
+              {%else%}
+            <a href="{% url 'profile' %}"><button class="btn btn-outline-warning">Профиль</button ></a>
+            <a href="{% url 'exit' %}"><button class="btn btn-outline-light ml-md-3">Выйти</button></a>
+            {% endif %}
+        </nav>
+    </header>
+    <section class="box bg-light">
+        <div class="row">
+            <div class="col-md-12 col">
+                {%block Content_title%}
+                {% endblock %}
+            </div>
+        </div>
+        <!-- <div class="row d-md-flex flex-wrap justify-content-center"> -->
+            {% block Content %}
+
+            {% endblock%}
+        <!-- </div> -->
+
+    </section>
+    <footer class="box bg-dark">
+        <div>
+            <p class="text-center">&copy;Все права защищены</p>
+        </div>
+    </footer>
+</body>
+</html>

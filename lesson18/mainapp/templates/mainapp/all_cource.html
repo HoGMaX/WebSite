@@ -1,0 +1,19 @@
+{% extends 'mainapp/tamplate.html' %}
+
+{% block title %}Просмотреть контактакты{% endblock %}
+{% block Content %}
+
+<div class="row d-md-flex flex-wrap justify-content-center">
+    {% for item in slug %}
+    <div class="col-md-8 col-12">
+        <h3 class="text-dark">{{item.titel}}</h3>
+        <img class="box" src="{{item.img.url}}" alt="">
+        <p class="text-faded text-dark">
+            {{item.description}}
+        </p>
+        <br><hr><b class="text-warning"> {{item.name}}</b>
+        <br><hr><br>
+    </div>
+    {% endfor %}
+</div>
+{% endblock Content%}
